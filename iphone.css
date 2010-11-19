@@ -1,0 +1,140 @@
+/*-----------------------------
+  Layout
+-----------------------------*/
+
+body {
+	padding 				: 0;
+	margin 					: 0;
+	font 					: 12px Helvetica;
+	background-color		: rgba(0,0,0,0.5);
+	color 					: #FFFFFF;
+}
+
+a {
+	padding 				: 5px;
+	font-size 				: 20px;
+	font-weight				: bold;
+	text-decoration			: none;
+	color 					: #FFFFFF;
+}
+
+.title {
+	top 					: 0;
+	width 					: 320px;
+	height 					: 53px;
+	position 				: absolute;
+	padding					: 5px 10px;
+	padding-left 			: 0;
+}
+
+#title a {
+	position 				: absolute;
+	top 					: 1px;
+}
+
+#title span {
+	position 				: absolute;
+	top 					: 10px;
+	left 					: 45px;
+	margin-left 			: 5px;
+}
+
+#navigation {
+	width 					: 100%;
+	position 				: absolute;
+	top 					: 373px;
+	padding 				: 10px 0;
+	text-align 				: right;
+	border-top 				: 1px solid #FFFFFF;
+	z-index 				: 20;
+}
+
+#navigation a {
+	position 				: relative;
+	right 					: 30px;
+}
+
+#loading {
+	position 				: absolute;
+	z-index 				: 10; 
+	width 					: 200px;
+	top 					: 100px;
+	left 					: 40px;
+	background 				: black;
+	color 					: white;
+	text-align 				: center;
+	font					: bold 20px Helvetica;
+	padding 				: 20px;
+	-webkit-border-radius	: 8px;
+	-moz-border-radius		: 8px;
+	opacity 				: 0.7;
+}
+
+/*-----------------------------
+  Panoviewer
+-----------------------------*/
+
+/* 3D view (crop rectangle) */
+#viewport {
+	position 				: relative;
+	width 					: 1024px;
+	height 					: 740px;
+	overflow 				: hidden;
+	top 					: -100px;
+	left 					: 0;
+	-webkit-perspective 	: 300;
+	-webkit-transform-style : preserve-3d;
+}
+
+#cube {
+	width 					: 1024px;
+	height 					: 1024px;
+	-webkit-transform-style	: preserve-3d;
+	-webkit-transform		: translateZ(628px); 
+}
+
+/* Each side of the 3D cube */
+.panoside {
+	display 				: block;
+	position 				: absolute;
+	top 					: 0px;  /* 18px vertically centres the 283-pixel-tall image in a 320-pixel-tall container */
+	-webkit-backface-visibility: hidden;
+}
+
+#side1 { 
+	-webkit-transform 		: translateZ(-255px);
+} 
+
+#side2 {
+	-webkit-transform	 	: rotateY(-90deg) translateZ(-255px);
+}
+
+#side3 { 
+	-webkit-transform 		: rotateY(180deg) translateZ(-255px);
+}
+
+#side4 { 
+	-webkit-transform 		: rotateY(90deg) translateZ(-255px); 
+}
+
+#side5 { 
+	-webkit-transform		: rotateX(-90deg) translateZ(-255px);
+}
+
+#side6 { 
+	-webkit-transform		: rotateX(90deg) translateZ(-255px);
+}
+
+/*-----------------------------
+	Orientation
+-----------------------------*/
+
+.show_normal #content_normal { 
+	display 				: block; 
+}
+
+.show_normal { 	
+	width 					: 256px; 
+}
+
+

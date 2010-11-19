@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Museum Station TTC panorama in Toronto</title> 
+	<link rel="stylesheet" type="text/css" href="iphone.css" />
+	<script type="text/javascript" src="jquery-1.3.2.min.js"></script> 
+	<script type="text/javascript" src="jquery.hotkeys-0.7.9.min.js"></script>
+	<script type="text/javascript" src="scroller.js" ></script>
+	<script type="text/javascript" src="panoviewer.js" ></script>
+	<script type="text/javascript">
+		
+		var deltaPan = 64;
+		function rotateLeft(event){ $.fn.panoviewer.rotate(deltaPan,0);}
+		function rotateRight(event){ $.fn.panoviewer.rotate(-deltaPan,0);}
+		function rotateUp(event){$.fn.panoviewer.rotate(0,deltaPan * 1.2);}
+		function rotateDown(event){$.fn.panoviewer.rotate(0,-deltaPan * 1.2);}
+		
+
+		var images = [	'http://www.mmenchu.net/prototype/panos/1/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/1/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/1/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/1/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/1/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/1/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/2/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/2/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/2/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/2/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/2/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/2/cube_prefix0005.jpg',
+					/*	'http://www.mmenchu.net/prototype/panos/3/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/3/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/3/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/3/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/3/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/3/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/4/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/4/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/4/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/4/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/4/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/4/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/5/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/5/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/5/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/5/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/5/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/5/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/6/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/6/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/6/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/6/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/6/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/6/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/7/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/7/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/7/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/7/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/7/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/7/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/8/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/8/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/8/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/8/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/8/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/8/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/9/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/9/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/9/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/9/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/9/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/9/cube_prefix0005.jpg',
+						'http://www.mmenchu.net/prototype/panos/10/cube_prefix0000.jpg',
+						'http://www.mmenchu.net/prototype/panos/10/cube_prefix0001.jpg',
+						'http://www.mmenchu.net/prototype/panos/10/cube_prefix0002.jpg',
+						'http://www.mmenchu.net/prototype/panos/10/cube_prefix0003.jpg',
+						'http://www.mmenchu.net/prototype/panos/10/cube_prefix0004.jpg',
+						'http://www.mmenchu.net/prototype/panos/10/cube_prefix0005.jpg'*/];		 
+						
+		function preLoadImages(){
+			jQuery.each(images, function(i) {
+			  images[i] = new Image();
+			  images[i].src = this;
+			});
+		}
+		
+		var panoIndex = 0;
+		
+		function loadNextPano(event){
+			panoIndex += 1;
+			$('#side1').attr('src','http://www.mmenchu.net/prototype/panos/' + panoIndex + '/cube_prefix0000.jpg'); 
+			$('#side2').attr('src','http://www.mmenchu.net/prototype/panos/' + panoIndex + '/cube_prefix0001.jpg'); 
+			$('#side3').attr('src','http://www.mmenchu.net/prototype/panos/' + panoIndex + '/cube_prefix0002.jpg'); 
+			$('#side4').attr('src','http://www.mmenchu.net/prototype/panos/' + panoIndex + '/cube_prefix0003.jpg'); 
+			$('#side5').attr('src','http://www.mmenchu.net/prototype/panos/' + panoIndex + '/cube_prefix0004.jpg'); 
+			$('#side6').attr('src','http://www.mmenchu.net/prototype/panos/' + panoIndex + '/cube_prefix0005.jpg'); 
+			$('#message').html('Loading pano ' + panoIndex);
+		}
+		
+		$(function() {
+			$('#cube').panoviewer({ pano: 'http://127.0.0.1/#face#.jpg', loadNow: true });
+			$('#viewport').scroller({ scroll : function(x, y) { $.fn.panoviewer.rotate(x,y); } });
+			
+			$(document).bind('keydown', 'left', rotateLeft);
+			$(document).bind('keydown', 'right', rotateRight);
+			$(document).bind('keydown', 'shift+up', rotateUp);
+			$(document).bind('keydown', 'shift+down', rotateDown);
+			$(document).bind('keydown', 'shift+left', rotateLeft);
+			$(document).bind('keydown', 'shift+right', rotateRight);
+			$(document).bind('keydown', 'up', loadNextPano);
+			$(document).bind('keydown', 'down', loadNextPano);
+
+			window.setTimeout(preLoadImages, 1000);
+		});
+		  		
+	</script>
+</head>
+
+<body>
+	<center>
+	<div style="position:relative;width:1024px;text-align:left;">
+		<p id="message"></p>
+	</div>
+
+	<div style="position:relative;width:1024px;height:640px;overflow:hidden;">
+		<div id="viewport">
+			<div id="cube" class="show_normal">
+				<div id="content_normal" style="display:block;">
+					<img class="panoside" src="transparent.gif" id="side1" style="left: 256px;top: 128px;" width="512" height="512" />
+					<img class="panoside" src="transparent.gif" id="side2" style="left: 256px;top: 128px;" width="512" height="512" />
+					<img class="panoside" src="transparent.gif" id="side3" style="left: 256px;top: 128px;" width="512" height="512" />
+					<img class="panoside" src="transparent.gif" id="side4" style="left: 256px;top: 128px;" width="512" height="512" />          
+					<img class="panoside" src="transparent.gif" id="side5" style="left: 256px;top: 128px;" width="512" height="512" />
+					<img class="panoside" src="transparent.gif" id="side6" style="left: 256px;top: 128px;" width="512" height="512" />
+				</div>
+			</div>
+		</div>
+		<div id="loading">loading image</div>
+	<div>
+	
+	
+	</center>
+</body>
+</html>
